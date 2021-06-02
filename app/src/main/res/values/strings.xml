@@ -3,4 +3,7 @@
     <string name="user_image">User Image</string>
     <string name="search">Search</string>
     <string name="button_search">Button Search</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="tab_1">Followers</string>
+    <string name="tab_2">Following</string>
 </resources>
