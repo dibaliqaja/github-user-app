@@ -19,6 +19,7 @@ class FollowersFragment: Fragment(R.layout.fragment_follow) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val args = arguments
         username = args?.getString(DetailActivity.EXTRA_USERNAME).toString()
         _binding = FragmentFollowBinding.bind(view)
