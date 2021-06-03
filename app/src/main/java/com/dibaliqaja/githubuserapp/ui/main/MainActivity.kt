@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,6 +13,7 @@ import com.dibaliqaja.githubuserapp.R
 import com.dibaliqaja.githubuserapp.data.model.User
 import com.dibaliqaja.githubuserapp.databinding.ActivityMainBinding
 import com.dibaliqaja.githubuserapp.ui.detail.DetailActivity
+import com.dibaliqaja.githubuserapp.ui.favorite.FavoriteActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,6 +34,7 @@ class MainActivity : AppCompatActivity() {
                 Intent(this@MainActivity, DetailActivity::class.java).also {
                     it.putExtra(DetailActivity.EXTRA_USERNAME, data.login)
                     it.putExtra(DetailActivity.EXTRA_ID, data.id)
+                    it.putExtra(DetailActivity.EXTRA_URL, data.avatar_url)
                     startActivity(it)
                 }
             }
@@ -47,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                 searchUser()
             }
 
-            edtSearch.setOnKeyListener { v, keyCode, event ->
+            edtSearch.setOnKeyListener { _, keyCode, event ->
                 if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                     return@setOnKeyListener true
                 }
@@ -78,5 +82,21 @@ class MainActivity : AppCompatActivity() {
         } else {
             binding.progressBar.visibility = View.GONE
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.option_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.favorite_menu -> {
+                Intent(this, FavoriteActivity::class.java).also {
+                    startActivity(it)
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
