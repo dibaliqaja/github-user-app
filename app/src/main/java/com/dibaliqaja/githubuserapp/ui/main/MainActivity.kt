@@ -14,6 +14,7 @@ import com.dibaliqaja.githubuserapp.data.model.User
 import com.dibaliqaja.githubuserapp.databinding.ActivityMainBinding
 import com.dibaliqaja.githubuserapp.ui.detail.DetailActivity
 import com.dibaliqaja.githubuserapp.ui.favorite.FavoriteActivity
+import com.dibaliqaja.githubuserapp.ui.settings.SettingsActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -93,6 +94,12 @@ class MainActivity : AppCompatActivity() {
         when(item.itemId) {
             R.id.favorite_menu -> {
                 Intent(this, FavoriteActivity::class.java).also {
+                    startActivity(it)
+                }
+            }
+
+            R.id.settings_menu -> {
+                Intent(this, SettingsActivity::class.java).also {
                     startActivity(it)
                 }
             }

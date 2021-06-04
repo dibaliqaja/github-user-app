@@ -18,7 +18,7 @@ interface Api {
     @Headers("Authorization: token {GITHUB_TOKEN}")
     fun getUserDetail(@Path("username") username: String): Call<DetailUserResponse>
 
-    @GET("users/{username}/follower")
+    @GET("users/{username}/followers")
     @Headers("Authorization: token {GITHUB_TOKEN}")
     fun getFollowers(@Path("username") username: String): Call<ArrayList<User>>
 
